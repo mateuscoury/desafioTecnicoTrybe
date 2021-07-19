@@ -1,0 +1,35 @@
+{
+  "name": "desafio-tecnico",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "mocha ./tests/**/*$NAME*.test.js --exit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "heroku": "^7.56.1",
+    "joi": "^17.4.1",
+    "mocha": "^9.0.2",
+    "mysql2": "^2.2.5",
+    "node-correios": "^3.0.2",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.12",
+    "pm2": "^5.1.0",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0",
+    "sinon": "^11.1.1",
+    "xhr": "^2.6.0",
+    "yup": "^0.32.9"
+  }
+}
