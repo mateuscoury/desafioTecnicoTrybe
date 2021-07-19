@@ -22,6 +22,20 @@ module.exports = {
       celNumero: 123456,
       endereço: 'Rua dali',
       especialidades: 'Javascript,CSS',
+    },
+    {
+      nome: 'Mateus1',
+      telNumero: 123489123,
+      celNumero: 123456,
+      endereço: 'Rua dali',
+      especialidades: 'CSS,REDUX',
+    },
+    {
+      nome: 'Mateus2',
+      telNumero: 123489123,
+      celNumero: 123456,
+      endereço: 'Rua dali',
+      especialidades: 'REACT',
     }
     ])
   },

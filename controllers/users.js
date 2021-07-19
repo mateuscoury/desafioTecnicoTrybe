@@ -2,7 +2,7 @@ const user = require("express").Router()
 const schema = require('../services/authSchema')
 const { Usuario } = require('../models/index')
 const getAdress = require("../services/apis")
-
+const { Op } = require('sequelize');
 
 
 
@@ -25,6 +25,23 @@ user.get("/:id", async (req, res) => {
   }
 })
 
+user.get("/especi/:ling", async (req, res) => {
+  try {
+    const datas = req.params.ling;
+    console.log(datas)
+    const data = await Usuario.findAll({
+      where: {
+        especialidades: {
+          [Op.like]: '%' + datas + '%'
+        }
+      }
+    })
+    console.log(data)
+    return res.status(200).json(data)
+  } catch (error) {
+    return res.status(500).json(error.message)
+  }
+})
 
 user.post("/create", async (req, res) => {
   try {

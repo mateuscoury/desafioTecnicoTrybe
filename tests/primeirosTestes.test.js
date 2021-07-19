@@ -10,30 +10,22 @@ const app = require('../index');
 const { Usuario } = require('../models/index');
 
 
-describe('Busca todos os usuários', () => {
+describe('Testes Básicos', () => {
   describe('quando não existe nenhum usuário cadastrado', () => {
-    const findAllStub = stub(Usuario, 'findAll');
-
-    before(() => {
-      findAllStub.resolves([]);
+    let res
+    before(async () => {
+      res = await chai.request(app).get('/usuarios')
     });
 
-    after(() => {
-      findAllStub.restore();
-    });
-
-    it('called User.findAll', async () => {
-      const res = await chai.request(app)
-        .post('/usuarios')
-
-      expect(res.body).to.be.empty
+    it('retorna um objeto como resposta', async () => {
+      expect(res.body).to.be.an("object")
     })
 
-    it('called User.findAll', async () => {
-      const res = await chai.request(app)
-        .post('/usuarios')
-
-      expect(res.status).to.be.equals(404)
+    it('retorna um status ok', async () => {
+      expect(res.status).to.be.equals(200)
+    })
+    it('retorna um objeto que nao esta vazio', async () => {
+      expect(res.body).to.not.be.empty
     })
   })
 })
