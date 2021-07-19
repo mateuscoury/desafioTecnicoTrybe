@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <h1>KOLE</h1>
+    <div>
+      <ul id="lista">
+      </ul>
+    </div>
+    <form id="form" action=''>
+      <input id="nome" type="text">
+      <input id="tel" type="text">
+      <input id="cel" type="text">
+      <input id="cep" type="text">
+      <input id="especializacoes" type="text">
+      <button>ENVIAR</button>
+    </form>
+  </body>
+  <script>
+    document.querySelector("#form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const nome = document.querySelector("#nome").value
+      const tel = document.querySelector("#tel").value
+      const cel = document.querySelector("#cel").value
+      const cep = document.querySelector("#cep").value
+      const especializacoes = document.querySelector("#especializacoes").value
+      fetch('http://localhost:3000/usuarios/create', {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+
+        },
+        body: JSON.stringify({ nome, telNumero: tel, celNumero: cel, endereço: cep, especialidades: especializacoes })
+      }).then(data => data.json()).then(data => console.log(data))
+    })
+
+    const lista = document.querySelector("#lista")
+    const zin = fetch("http://localhost:3000/usuarios").then(data => data.json()).then(({ usuarios }) => usuarios)
+    zin.then(data => data.forEach(e => {
+      const ele = document.createElement("li")
+      ele.innerHTML = e.nome
+      lista.appendChild(ele)
+    }))
+
+
+
+  </script>
+
+</html>
